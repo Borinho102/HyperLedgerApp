@@ -30,12 +30,12 @@ var Student = assets.AssetType{
 			Required: true,
 			Tag:      "score",
 			Label:    "Score of the user",
-			DataType: "int",
+			DataType: "float32",
 			// Validate funcion
 			Validate: func(scr interface{}) error {
-				scoreStr := scr.(string)
-				if scoreStr == "" {
-					return fmt.Errorf("name must be non-empty")
+				scoreStr := scr.(float32)
+				if scoreStr < 0 {
+					return fmt.Errorf("Score must be higher than 0")
 				}
 				return nil
 			},
